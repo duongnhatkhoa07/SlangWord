@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Scanner;
+import java.util.TreeMap;
 
 /**
  *
@@ -20,7 +22,7 @@ public class slangWordMap {
      * @param args the command line arguments
      */
     //public HashMap<String, String> map;
-    public Map<String, String> map;
+    public TreeMap<String, String> map;
     public ArrayList<String> history = new ArrayList<>();
     //Map<String, String> pref = new TreeMap<String, String>(String.CASE_INSENSITIVE_ORDER);
     private static final String historyFile = "history.txt";
@@ -52,5 +54,29 @@ public class slangWordMap {
             System.out.println(key + ": " + map.get(key));
         }
         history.add(def);
+    }
+    
+    public void add () {
+        Scanner s = new Scanner(System.in);
+        System.out.println("Nhap vao slangword: ");
+        String key = s.nextLine();
+        
+        if (checkKey(key) == true){
+            System.out.println("Slang word da co trong tu dien!");
+        }else{
+            System.out.println("Nhap vao dinh nghia: ");
+            String def = s.nextLine();
+
+            map.put(key, def);
+            nhapXuatFile.writeFile("slangAdded.txt", map);
+        } 
+    }
+    
+    public boolean checkKey(String key) {
+        for (String keyChecker : map.keySet()) {
+                if (keyChecker.equals(key))
+                        return true;
+        }
+        return false;
     }
 }

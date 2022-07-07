@@ -57,6 +57,7 @@ public class Main {
                     break;
                 case 4:
                     //TODO add
+                    swmap.add();
                     break;
                 case 5:
                     //TODO edit
