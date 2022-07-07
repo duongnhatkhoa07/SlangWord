@@ -45,12 +45,12 @@ public class Main {
                 case 1:
                     System.out.println("Nhap vao keyword: ");
                     String kw = s.nextLine();
-                    swmap.search(kw);
+                    swmap.searchByKey(kw);
                     break;
                 case 2:
                     System.out.println("Nhap vao keyword co trong definition: ");
                     String kwDef = s.nextLine();
-                    //TODO
+                    swmap.searchByDef(kwDef);
                     break;
                 case 3:
                     //TODO show history
