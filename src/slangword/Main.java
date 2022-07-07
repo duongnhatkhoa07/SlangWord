@@ -4,6 +4,7 @@
  */
 package slangword;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 /**
@@ -28,9 +29,11 @@ public class Main {
         
     }
     
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException{
         Scanner s = new Scanner(System.in);
+        slangWordMap swmap = new slangWordMap();
         int choose;
+        
         do {
             showMenu();
             System.out.print("Chon mot chuc nang: ");
@@ -42,7 +45,7 @@ public class Main {
                 case 1:
                     System.out.println("Nhap vao keyword: ");
                     String kw = s.nextLine();
-                    //TODO
+                    swmap.search(kw);
                     break;
                 case 2:
                     System.out.println("Nhap vao keyword co trong definition: ");
