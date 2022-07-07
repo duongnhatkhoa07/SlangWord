@@ -56,14 +56,13 @@ public class Main {
                     //TODO show history
                     break;
                 case 4:
-                    //TODO add
                     swmap.add();
                     break;
                 case 5:
                     //TODO edit
                     break;
                 case 6:
-                    //TODO delete
+                    swmap.delete();
                     break;
                 case 7:
                     //TODO reset

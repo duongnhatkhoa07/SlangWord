@@ -1738,7 +1738,8 @@ dndc`Don't Know, Don't Care
 dne`Do Not Erase| Does Not Exist
 dnf`Did Not Finish
 dnftt`Do Not Feed The Troll
-dnk`Duong Nhat Khoa
+dnk`Do Not Know
+dnkdnk`Duong Nhat Khoa
 dnm`Does Not Matter| Deep and Meaningful
 dno`Don't Know
 dnp`Do Not Post
@@ -7197,4 +7198,4 @@ wmg`Warner Music Group
 wmj`Wat maak jy?| what are you doing?
 wml`Wish Me Luck
 wmmows`Wash My Mouth Out With Soap!
-wmp`Windows Media Player|
+wmp`Wi

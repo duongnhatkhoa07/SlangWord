@@ -68,10 +68,24 @@ public class slangWordMap {
             String def = s.nextLine();
 
             map.put(key, def);
+            System.out.println("Them vao thanh cong: " + key);
             nhapXuatFile.writeFile("slangAdded.txt", map);
         } 
     }
     
+    public void delete(){
+        Scanner s = new Scanner(System.in);
+        System.out.println("Nhap vao slangword: ");
+        String key = s.nextLine();
+        
+        if (checkKey(key) == false){
+            System.out.println("Slang word khong co trong tu dien!");
+        }else{
+            map.remove(key);
+            System.out.println("Da xoa thanh cong slang word: " + key);
+            nhapXuatFile.writeFile("slang.txt", map);
+        } 
+    }
     public boolean checkKey(String key) {
         for (String keyChecker : map.keySet()) {
                 if (keyChecker.equals(key))
