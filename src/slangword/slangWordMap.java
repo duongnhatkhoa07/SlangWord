@@ -9,8 +9,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Random;
 import java.util.Scanner;
 import java.util.TreeMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -27,6 +30,7 @@ public class slangWordMap {
     //Map<String, String> pref = new TreeMap<String, String>(String.CASE_INSENSITIVE_ORDER);
     private static final String historyFile = "history.txt";
     private static final String slang = "slang.txt";
+    private static final String slangOg = "slang-origin.txt";
     
     public slangWordMap() throws IOException {
         map = nhapXuatFile.readFile(slang);
@@ -149,6 +153,41 @@ public class slangWordMap {
             
             System.out.println("Nhan enter de tiep tuc...");
             s.nextLine();
-        } 
+        }
+    }
+    public void showHistory(){
+        Scanner s = new Scanner(System.in);
+        if (history.isEmpty() == true){
+            System.out.println("Chua co tim kiem nao duoc ghi lai!");
+            System.out.println("Nhan enter de tiep tuc...");
+            s.nextLine();
+        } else{
+            System.out.println("Lich su tim kiem: ");
+            for (String i : history){
+                System.out.println("[" + i + "]");
+            }
+            System.out.println("Nhan enter de tiep tuc...");
+            s.nextLine();
+        }
+    }
+    
+    public void reset(){
+        try {
+            map = nhapXuatFile.readFile(slangOg);
+            nhapXuatFile.writeFile(slang, map);
+        } catch (IOException ex) {
+            Logger.getLogger(slangWordMap.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void randomSlang(){
+        Scanner s = new Scanner(System.in);
+        Random rand = new Random();
+        ArrayList keys = new ArrayList<String>(map.keySet());
+        String randomKey = (String) keys.get(rand.nextInt(keys.size()));
+        
+        System.out.println("Random Slang word cua ngay:\n[" + randomKey + "] : [" + map.get(randomKey) + "]");
+        System.out.println("Nhan enter de tiep tuc...");
+        s.nextLine();
     }
 }

@@ -53,7 +53,7 @@ public class Main {
                     swmap.searchByDef(kwDef);
                     break;
                 case 3:
-                    //TODO show history
+                    swmap.showHistory();
                     break;
                 case 4:
                     swmap.add();
@@ -65,11 +65,10 @@ public class Main {
                     swmap.delete();
                     break;
                 case 7:
-                    //TODO reset
+                    swmap.reset();
                     break;
                 case 8:
-                    //TODO Random
-                    System.out.println("Slang word on this day: ");
+                    swmap.randomSlang();
                     break;
                 case 9:
                     //TODO quiz
