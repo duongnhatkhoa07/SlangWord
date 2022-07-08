@@ -6,6 +6,7 @@ package slangword;
 
 import java.io.IOException;
 import java.util.Scanner;
+import java.util.TreeMap;
 
 /**
  *
@@ -68,13 +69,20 @@ public class Main {
                     swmap.reset();
                     break;
                 case 8:
-                    swmap.randomSlang();
+                    TreeMap<String, String> randMap = new TreeMap<>();
+                    randMap = swmap.randomSlang(1, 0);
+                    System.out.println("Random slang word cua ngay: ");
+                    for (String key : randMap.keySet()){
+                        System.out.println("[" + key + "] : [" + randMap.get(key) + "]");
+                    }
+                    System.out.println("Nhan enter de tiep tuc...");
+                    s.nextLine();
                     break;
                 case 9:
-                    //TODO quiz
+                    swmap.createQuiz("Chon dap an la dinh nghia cua: ", 0);
                     break;
                 case 10:
-                    //TODO quiz 2
+                    swmap.createQuiz("Chon slang word cho dinh nghia sau: ", 1);
                     break;
                 }
             
