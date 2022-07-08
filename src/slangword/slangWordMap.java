@@ -33,57 +33,92 @@ public class slangWordMap {
     }
     
     public void searchByKey(String key){
-        String definition = map.get(key.toLowerCase(Locale.ROOT));
+        String definition = map.get(key.toLowerCase());
+        Scanner s = new Scanner(System.in);
         if (definition != null){
-            System.out.println("Nghia cua: " + key + " la: " + definition);
+            System.out.println("Nghia cua [" + key + "] : [" + definition + "]");
+            System.out.println("Nhan enter de tiep tuc...");
+            s.nextLine();
         }
         else {
-            System.out.println("Khong tim thay keyword nhap vao!");
+            System.out.println("Khong tim thay [" + key + "] trong tu dien!");
+            System.out.println("Nhan enter de tiep tuc...");
+            s.nextLine();
         }
         history.add(key);
     }
     
     public void searchByDef(String def){
         ArrayList<String> keyList = new ArrayList<>();
-        
+        Scanner s = new Scanner(System.in);
         for (String key : map.keySet()){
-            if (map.get(key).contains(def))
+            if (map.get(key).toLowerCase().contains(def.toLowerCase()))
                 keyList.add(key);
         }
-        for (String key : keyList){
-            System.out.println(key + ": " + map.get(key));
+        if(keyList.isEmpty() == true){
+            System.out.println("Khong tim thay slang word co chua [" + def + "] trong dinh nghia!");
+            System.out.println("Nhan enter de tiep tuc...");
+            s.nextLine();
+        }
+        else {
+            System.out.println("Tim thay cac slang word:");
+            for (String key : keyList){
+                System.out.println("[" + key + "] : [" + map.get(key) + "]");
+            }
+            System.out.println("Nhan enter de tiep tuc...");
+            s.nextLine();
         }
         history.add(def);
     }
     
     public void add () {
         Scanner s = new Scanner(System.in);
-        System.out.println("Nhap vao slangword: ");
+        System.out.print("Nhap vao slangword: ");
         String key = s.nextLine();
         
         if (checkKey(key) == true){
             System.out.println("Slang word da co trong tu dien!");
+            System.out.println("Nhan enter de tiep tuc...");
+            s.nextLine();
         }else{
-            System.out.println("Nhap vao dinh nghia: ");
+            System.out.print("Nhap vao dinh nghia: ");
             String def = s.nextLine();
 
             map.put(key, def);
-            System.out.println("Them vao thanh cong: " + key);
-            nhapXuatFile.writeFile("slangAdded.txt", map);
+            System.out.println("Them vao thanh cong: [" + key + "]" + " : [" + def + "]");
+            nhapXuatFile.writeFile("slang.txt", map);
+            System.out.println("Nhan enter de tiep tuc...");
+            s.nextLine();
+            
         } 
     }
     
     public void delete(){
         Scanner s = new Scanner(System.in);
-        System.out.println("Nhap vao slangword: ");
+        System.out.print("Nhap vao slangword: ");
         String key = s.nextLine();
         
         if (checkKey(key) == false){
-            System.out.println("Slang word khong co trong tu dien!");
+            System.out.println("[" + key + "] Khong co trong tu dien!");
+            System.out.println("Nhan enter de tiep tuc...");
+            s.nextLine();
         }else{
-            map.remove(key);
-            System.out.println("Da xoa thanh cong slang word: " + key);
-            nhapXuatFile.writeFile("slang.txt", map);
+            System.out.println("Ban co chac chan muon xoa [" + key + "] ?");
+            System.out.println("1. Co!");
+            System.out.println("2. Khong!");
+            int choose = s.nextInt();
+            s.nextLine();
+            if (choose == 1){
+                map.remove(key);
+                System.out.println("Da xoa thanh cong slang word: [" + key + "]");
+                nhapXuatFile.writeFile("slang.txt", map);
+                System.out.println("Nhan enter de tiep tuc...");
+                s.nextLine();
+            }
+            else {
+                System.out.println("Tro ve Menu chinh. Nhan enter de tiep tuc...");
+                s.nextLine();
+            }
         } 
     }
     public boolean checkKey(String key) {
@@ -92,5 +127,28 @@ public class slangWordMap {
                         return true;
         }
         return false;
+    }
+    
+    public void edit(){
+        Scanner s = new Scanner(System.in);
+        System.out.print("Nhap vao slangword: ");
+        String key = s.nextLine();
+        
+        if (checkKey(key) == false){
+            System.out.println("[" + key + "] khong co trong tu dien!");
+            System.out.println("Nhan enter de tiep tuc...");
+            s.nextLine();
+        }else{
+            System.out.println("Nghia cua [" + key + "] : [" + map.get(key) + "]");
+            System.out.print("Nhap vao dinh nghia moi cua [" + key + "] : ");
+            String newDef = s.nextLine();
+            map.replace(key, newDef);
+            
+            System.out.println("Cap nhat thanh cong slang word [" + key + "]. Dinh nghia moi: [" + newDef + "]");
+            nhapXuatFile.writeFile("slang.txt", map);
+            
+            System.out.println("Nhan enter de tiep tuc...");
+            s.nextLine();
+        } 
     }
 }

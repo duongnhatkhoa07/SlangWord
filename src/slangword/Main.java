@@ -43,12 +43,12 @@ public class Main {
                 case 0:
                     break;
                 case 1:
-                    System.out.println("Nhap vao keyword: ");
+                    System.out.print("Nhap vao keyword: ");
                     String kw = s.nextLine();
                     swmap.searchByKey(kw);
                     break;
                 case 2:
-                    System.out.println("Nhap vao keyword co trong definition: ");
+                    System.out.print("Nhap vao keyword co trong definition: ");
                     String kwDef = s.nextLine();
                     swmap.searchByDef(kwDef);
                     break;
@@ -59,7 +59,7 @@ public class Main {
                     swmap.add();
                     break;
                 case 5:
-                    //TODO edit
+                    swmap.edit();
                     break;
                 case 6:
                     swmap.delete();

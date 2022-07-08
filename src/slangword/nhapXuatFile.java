@@ -24,14 +24,14 @@ public class nhapXuatFile {
     public static TreeMap<String, String> readFile (String filename) throws IOException {
         TreeMap<String, String> map = new TreeMap<String, String>(String.CASE_INSENSITIVE_ORDER);
         try{
-        BufferedReader br = new BufferedReader(new FileReader(filename));
-        String line;
-        while ((line = br.readLine()) != null){
-            String parts[] = line.split("`", 2);
-            if (parts.length >= 2){
-                map.put(parts[0].toLowerCase(Locale.ROOT), parts[1]);
+            BufferedReader br = new BufferedReader(new FileReader(filename));
+            String line;
+            while ((line = br.readLine()) != null){
+                String parts[] = line.split("`", 2);
+                if (parts.length >= 2){
+                    map.put(parts[0].toLowerCase(Locale.ROOT), parts[1]);
+                }
             }
-        }
         }catch(FileNotFoundException ex){
             ex.printStackTrace();
         }
